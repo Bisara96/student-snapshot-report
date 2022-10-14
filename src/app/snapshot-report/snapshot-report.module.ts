@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ResultHighlighterDirective } from './snapshots-table/result-highlighter.directive';
 import { BarChartComponent } from './snapshot-visualizations/bar-chart/bar-chart.component';
 import { SnapshotVisualizationsComponent } from './snapshot-visualizations/snapshot-visualizations.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -25,7 +26,8 @@ import { SnapshotVisualizationsComponent } from './snapshot-visualizations/snaps
     CommonModule,
     ReactiveFormsModule,
     MaterialsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxChartsModule
   ]
 })
 export class SnapshotReportModule { }

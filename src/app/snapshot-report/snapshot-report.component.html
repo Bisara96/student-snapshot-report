@@ -1,6 +1,6 @@
-<div class="container d-flex flex-column justify-content-evenly">
+<div class="container d-flex flex-column">
     <p class="h3">Reporting - Student Snapshots</p>
-    <app-snapshots-filters></app-snapshots-filters>
-    <app-snapshot-visualizations></app-snapshot-visualizations>
-    <app-snapshots-table [tableData]="snapshotViewData"></app-snapshots-table>
+    <app-snapshots-filters class="mb-3"></app-snapshots-filters>
+    <app-snapshot-visualizations class="mb-3" [snapShotData]="snapshotViewData"></app-snapshot-visualizations>
+    <app-snapshots-table class="mb-3" [tableData]="snapshotViewData"></app-snapshots-table>
 </div>

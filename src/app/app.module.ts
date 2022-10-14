@@ -1,16 +1,17 @@
-import { MaterialsModule } from './materials/materials.module';
-import { SnapshotReportModule } from './snapshot-report/snapshot-report.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MaterialsModule } from './materials/materials.module';
+import { SnapshotReportModule } from './snapshot-report/snapshot-report.module';
 
+import { MatTableModule } from '@angular/material/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,7 +19,8 @@ import { MatTableModule } from '@angular/material/table';
     BrowserAnimationsModule,
     MaterialsModule,
     MatTableModule,
-    SnapshotReportModule
+    SnapshotReportModule,
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

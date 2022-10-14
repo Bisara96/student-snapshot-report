@@ -41,7 +41,7 @@ export class SnapshotDataService {
       if (!studSnapshotViewData.length) {
         const from = moment(filter.dateRange?.from).format('DD MMMM YYYY');
         const to = moment(filter.dateRange?.to).format('DD MMMM YYYY');
-        
+
         let message = `No content has been completed by ${student}`;
 
         if (filter.dateRange?.from) {
@@ -51,7 +51,7 @@ export class SnapshotDataService {
         if (filter.dateRange?.from && filter.dateRange?.to) {
           message += ` to ${to}.`;
         }
-        
+
         studSnapshotViewData.push({
           student,
           message
@@ -103,5 +103,26 @@ export class SnapshotDataService {
     }
 
     return processedData;
+  }
+
+  groupSnapshotsByResultLevels(snapshotData: SnapshotViewModel[]) {
+    const groupedData: { excellent: number, good: number, ok: number, weak: number, unassigned: number } = { excellent: 0, good: 0, ok: 0, weak: 0, unassigned: 0 };
+    for (const snapshot of snapshotData) {
+      if (snapshot.result) {
+        if (snapshot.result >= 90) {
+          groupedData.excellent++;
+        } else if (snapshot.result >= 80) {
+          groupedData.good++;
+        } else if (snapshot.result >= 60) {
+          groupedData.ok++;
+        } else {
+          groupedData.weak++;
+        }
+      } else {
+        groupedData.unassigned++;
+      }
+    }
+
+    return groupedData;
   }
 }

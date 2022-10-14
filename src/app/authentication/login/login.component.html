@@ -1,0 +1,25 @@
+<div class="container h-100 d-flex justify-content-center">
+    <div class="w-50 d-flex flex-column my-auto" [formGroup]="formGroup">
+
+        <p class="h3 text-center">Login</p>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input formControlName="usernameCtrl" matInput>
+            <mat-error *ngIf="usernameCtrl.errors && usernameCtrl.errors['required']">Please enter a username</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" formControlName="passwordCtrl" matInput>
+            <mat-error *ngIf="passwordCtrl.errors && passwordCtrl.errors['required']">Please enter a password</mat-error>
+        </mat-form-field>
+
+        <p>Click <a routerLink="/register">here</a> to register a new account.</p>
+    
+        <div class="d-flex justify-content-end">
+            <button mat-raised-button color="primary" class="mx-3" (click)="login()">Login</button>
+            <button mat-raised-button color="accent" (click)="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

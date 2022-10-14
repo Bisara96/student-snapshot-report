@@ -34,7 +34,9 @@ export class ResultHighlighterDirective implements OnInit{
 
     el.nativeElement.style.color = color;
 
-    el.nativeElement.innerText = `${this.result}%`;
+    if (this.result) {
+      el.nativeElement.innerText = `${this.result}%`;
+    }
   }
 
 }
