@@ -1,0 +1,37 @@
+<div [formGroup]="filterFormGroup" class="d-flex justify-content-evenly">
+    <mat-form-field appearance="fill">
+        <mat-label>Choose a class</mat-label>
+        <mat-select formControlName="classControl" [disabled]="!classes.length">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let class of classes" [value]="class">{{ class.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Choose a student</mat-label>
+        <mat-select formControlName="studentControl" [disabled]="!students.length">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let student of students" [value]="student">{{ student }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>From</mat-label>
+        <input matInput formControlName="dateRangeStartCtrl" [matDatepicker]="startPicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+        <mat-error *ngIf="dateRangeStartCtrl.errors && dateRangeStartCtrl.errors['dateRangeStartCtrl']">Please select a valid date range</mat-error>
+        <mat-error *ngIf="dateRangeStartCtrl.errors && dateRangeStartCtrl.errors['matDatepickerParse']">Please enter a valid MM/DD/YYYY date</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>To</mat-label>
+        <input matInput formControlName="dateRangeEndCtrl" [matDatepicker]="endPicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+        <mat-error *ngIf="dateRangeEndCtrl.errors && dateRangeEndCtrl.errors['dateRangeStartCtrl']">Please select a valid date range</mat-error>
+        <mat-error *ngIf="dateRangeEndCtrl.errors && dateRangeEndCtrl.errors['matDatepickerParse']">Please enter a valid MM/DD/YYYY date</mat-error>
+    </mat-form-field>
+</div>
