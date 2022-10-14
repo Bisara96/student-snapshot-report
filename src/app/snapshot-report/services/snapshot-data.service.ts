@@ -15,11 +15,22 @@ export class SnapshotDataService {
 
   constructor() { }
 
+  /**
+   * Get all the students from all classes
+   * @param classes class and respective students lists
+   * @returns all students of all the classes
+   */
   getAllStudentsOfClasses(classes: IClass[]): string[] {
     return classes.reduce((students: string[], classItem: IClass) => [...students, ...(classItem?.students || [])], []);
   }
 
-  getSnapshotsOfStudents(snapshotData: Snapshot[], filter: FilterModel) {
+  /**
+   * Disaggregate snapshot data respective to given set of students. If a particular student has no data, a message is added.
+   * @param snapshotData aggregated snapshot data
+   * @param filter filter model (students list, date ranges etc) 
+   * @returns disaggregated snapshot view model
+   */
+  getSnapshotsOfStudents(snapshotData: Snapshot[], filter: FilterModel): SnapshotViewModel[] {
 
     // const students = (filter?.students || []).sort(); because student name is alphaneumeric and it messes up the order i.e: Student 12 is < Student 9
     const students = (filter?.students || []).sort((s1, s2) => {
@@ -78,6 +89,12 @@ export class SnapshotDataService {
     }, [])
   } */
 
+  /**
+   * Disaggregate individual student snapshot data
+   * @param studSnapData 
+   * @param dateRange 
+   * @returns 
+   */
   processStudentAttemps(studSnapData: Snapshot, dateRange?: { from?: Date, to?: Date }): SnapshotViewModel[] {
     const { id, student, content, time, skill, attempts, type } = studSnapData;
     const { weeks, values } = attempts || { weeks: [], values: [] };
@@ -105,6 +122,11 @@ export class SnapshotDataService {
     return processedData;
   }
 
+  /**
+   * Group activites by different result levels
+   * @param snapshotData 
+   * @returns 
+   */
   groupSnapshotsByResultLevels(snapshotData: SnapshotViewModel[]) {
     const groupedData: { excellent: number, good: number, ok: number, weak: number, unassigned: number } = { excellent: 0, good: 0, ok: 0, weak: 0, unassigned: 0 };
     for (const snapshot of snapshotData) {

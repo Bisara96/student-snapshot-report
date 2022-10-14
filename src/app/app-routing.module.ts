@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'report', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'report', component: SnapshotReportComponent, canActivate: [AuthenticationGuard]},
   { path: 'register', component: RegisterComponent},
