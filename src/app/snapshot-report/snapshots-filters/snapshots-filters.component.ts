@@ -97,8 +97,7 @@ export class SnapshotsFiltersComponent implements OnInit {
 
   updateFilters() {
     this.snapshotDataService.filterChange$.next({
-      class: this.classControl.value?.students,
-      student: this.studentControl.value,
+      students: this.studentControl.value && [this.studentControl.value] || this.classControl.value?.students,
       dateRange: {
         from: this.dateRangeStartCtrl.value,
         to: this.dateRangeEndCtrl.value

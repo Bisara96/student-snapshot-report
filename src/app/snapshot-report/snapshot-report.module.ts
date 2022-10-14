@@ -7,6 +7,8 @@ import { SnapshotsFiltersComponent } from './snapshots-filters/snapshots-filters
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultHighlighterDirective } from './snapshots-table/result-highlighter.directive';
+import { BarChartComponent } from './snapshot-visualizations/bar-chart/bar-chart.component';
+import { SnapshotVisualizationsComponent } from './snapshot-visualizations/snapshot-visualizations.component';
 
 
 
@@ -15,7 +17,9 @@ import { ResultHighlighterDirective } from './snapshots-table/result-highlighter
     SnapshotReportComponent,
     SnapshotsTableComponent,
     SnapshotsFiltersComponent,
-    ResultHighlighterDirective
+    ResultHighlighterDirective,
+    SnapshotVisualizationsComponent,
+    BarChartComponent
   ],
   imports: [
     CommonModule,

@@ -4,535 +4,7 @@ import * as moment from 'moment';
 import { BehaviorSubject } from 'rxjs';
 import { Snapshot, SnapshotViewModel } from './../models/snapshot.model';
 
-const DATA: Snapshot[] = [
-  {
-    "id": 1,
-    "content": "Pile Up",
-    "attempts": {
-      "weeks": [
-        "12/10/18",
-        "08/10/18",
-        "04/10/18",
-        "29/09/18",
-        "27/09/18",
-        "23/09/18"
-      ],
-      "values": [
-        43,
-        67,
-        49,
-        50,
-        87,
-        67
-      ]
-    },
-    "student": "Student 0",
-    "time": "30m",
-    "skill": "Count to 10",
-    "type": "Activity"
-  },
-  {
-    "id": 2,
-    "content": "Early Bird",
-    "attempts": {
-      "weeks": [
-        "15/10/18",
-        "18/09/18"
-      ],
-      "values": [
-        35,
-        72
-      ]
-    },
-    "student": "Student 0",
-    "time": "1hr 30m",
-    "skill": "Count to 10",
-    "type": "Activity"
-  },
-  {
-    "id": 3,
-    "content": "The Monsters Share",
-    "attempts": {
-      "weeks": [
-        "15/10/18",
-        "18/09/18"
-      ],
-      "values": [
-        35,
-        72
-      ]
-    },
-    "student": "Student 1",
-    "time": "1hr 30m",
-    "skill": "Model Fractions",
-    "type": "Activity"
-  },
-  {
-    "id": 4,
-    "content": "String-a-bead",
-    "attempts": {
-      "weeks": [
-        "14/10/18",
-        "10/10/18",
-        "06/10/18",
-        "27/09/18",
-        "17/09/18",
-        "13/09/18",
-        "14/09/18",
-        "23/09/18"
-      ],
-      "values": [
-        53,
-        77,
-        59,
-        60,
-        97,
-        77,
-        38,
-        89
-      ]
-    },
-    "student": "Student 2",
-    "time": "43m",
-    "skill": "Count to 10",
-    "type": "Activity"
-  },
-  {
-    "id": 5,
-    "content": "Flying Flocks",
-    "attempts": {
-      "weeks": [
-        "14/10/18",
-        "10/10/18",
-        "06/10/18",
-        "27/09/18",
-        "17/09/18",
-        "13/09/18",
-        "14/09/18",
-        "23/09/18"
-      ],
-      "values": [
-        53,
-        77,
-        59,
-        60,
-        97,
-        77,
-        38,
-        89
-      ]
-    },
-    "student": "Student 2",
-    "time": "7m",
-    "skill": "Count to 10",
-    "type": "Activity"
-  },
-  {
-    "id": 6,
-    "content": "Spinning Tables",
-    "attempts": {
-      "weeks": [
-        "12/10/18",
-        "08/10/18",
-        "04/10/18",
-        "29/09/18",
-        "27/09/18",
-        "23/09/18"
-      ],
-      "values": [
-        43,
-        67,
-        49,
-        50,
-        87,
-        67
-      ]
-    },
-    "student": "Student 3",
-    "time": "30m",
-    "skill": "Multiplication Table",
-    "type": "Activity"
-  },
-  {
-    "id": 7,
-    "content": "Early Bird",
-    "attempts": {
-      "weeks": [
-        "15/10/18",
-        "18/09/18"
-      ],
-      "values": [
-        35,
-        72
-      ]
-    },
-    "student": "Student 4",
-    "time": "30m",
-    "skill": "Odd and Even",
-    "type": "Activity"
-  },
-  {
-    "id": 8,
-    "content": "Early Bird",
-    "attempts": {
-      "weeks": [
-        "15/10/18",
-        "18/09/18"
-      ],
-      "values": [
-        35,
-        72
-      ]
-    },
-    "student": "Student 4",
-    "time": "30m",
-    "skill": "Odd and Even",
-    "type": "Activity"
-  },
-  {
-    "id": 9,
-    "content": "Save the Ball",
-    "attempts": {
-      "weeks": [
-        "15/10/18",
-        "18/09/18"
-      ],
-      "values": [
-        35,
-        72
-      ],
-      "number": 2
-    },
-    "student": "Student 5",
-    "time": "1hr 30m",
-    "skill": "Add-Subtract",
-    "type": "Activity"
-  },
-  {
-    "id": 10,
-    "content": "String-a-bead",
-    "attempts": {
-      "weeks": [
-        "14/10/18",
-        "10/10/18",
-        "06/10/18",
-        "27/09/18",
-        "17/09/18",
-        "13/09/18",
-        "14/09/18",
-        "23/09/18"
-      ],
-      "values": [
-        53,
-        77,
-        59,
-        60,
-        97,
-        77,
-        38,
-        89
-      ]
-    },
-    "student": "Student 6",
-    "time": "43m",
-    "skill": "Count to 10",
-    "type": "Activity"
-  },
-  {
-    "id": 11,
-    "content": "Flying Flocks",
-    "attempts": {
-      "weeks": [
-        "14/10/18",
-        "10/10/18",
-        "06/10/18",
-        "27/09/18",
-        "17/09/18",
-        "13/09/18",
-        "14/09/18",
-        "23/09/18"
-      ],
-      "values": [
-        53,
-        77,
-        59,
-        60,
-        97,
-        77,
-        38,
-        89
-      ]
-    },
-    "student": "Student 6",
-    "time": "7m",
-    "skill": "Count to 10",
-    "type": "Activity"
-  },
-  {
-    "id": 12,
-    "content": "Save the Ball",
-    "attempts": {
-      "weeks": [
-        "12/10/18",
-        "08/10/18",
-        "04/10/18",
-        "29/09/18",
-        "27/09/18",
-        "23/09/18"
-      ],
-      "values": [
-        43,
-        67,
-        49,
-        50,
-        87,
-        67
-      ]
-    },
-    "student": "Student 7",
-    "time": "30m",
-    "skill": "Add-Subtract",
-    "type": "Activity"
-  },
-  {
-    "id": 13,
-    "content": "Fair and Square",
-    "attempts": {
-      "weeks": [
-        "15/10/18",
-        "18/09/18"
-      ],
-      "values": [
-        35,
-        72
-      ]
-    },
-    "student": "Student 8",
-    "time": "1hr 30m",
-    "skill": "Area of Rectangle",
-    "type": "Activity"
-  },
-  {
-    "id": 14,
-    "content": "Early Bird",
-    "attempts": {
-      "weeks": [
-        "15/10/18",
-        "18/09/18"
-      ],
-      "values": [
-        35,
-        72
-      ]
-    },
-    "student": "Student 8",
-    "time": "1hr 30m",
-    "skill": "Count to 10",
-    "type": "Activity"
-  },
-  {
-    "id": 15,
-    "content": "String-a-bead",
-    "attempts": {
-      "weeks": [
-        "14/10/18",
-        "10/10/18",
-        "06/10/18",
-        "27/09/18",
-        "17/09/18",
-        "13/09/18",
-        "14/09/18",
-        "23/09/18"
-      ],
-      "values": [
-        53,
-        77,
-        59,
-        60,
-        97,
-        77,
-        38,
-        89
-      ]
-    },
-    "student": "Student 9",
-    "time": "43m",
-    "skill": "Count to 10",
-    "type": "Activity"
-  },
-  {
-    "id": 16,
-    "content": "Flying Flocks",
-    "attempts": {
-      "weeks": [
-        "14/10/18",
-        "10/10/18",
-        "06/10/18",
-        "27/09/18",
-        "17/09/18",
-        "13/09/18",
-        "14/09/18",
-        "23/09/18"
-      ],
-      "values": [
-        53,
-        77,
-        59,
-        60,
-        97,
-        77,
-        38,
-        89
-      ]
-    },
-    "student": "Student 9",
-    "time": "7m",
-    "skill": "Count to 10",
-    "type": "Activity"
-  },
-  {
-    "id": 17,
-    "content": "Early Bird",
-    "attempts": {
-      "weeks": [
-        "12/10/18",
-        "08/10/18",
-        "04/10/18",
-        "29/09/18",
-        "27/09/18",
-        "23/09/18"
-      ],
-      "values": [
-        43,
-        67,
-        49,
-        50,
-        87,
-        67
-      ]
-    },
-    "student": "Student 9",
-    "time": "30m",
-    "skill": "Odd and Even",
-    "type": "Activity"
-  },
-  {
-    "id": 18,
-    "content": "Early Bird",
-    "attempts": {
-      "weeks": [
-        "15/10/18",
-        "18/09/18"
-      ],
-      "values": [
-        35,
-        72
-      ]
-    },
-    "student": "Student 10",
-    "time": "30m",
-    "skill": "Odd and Even",
-    "type": "Activity"
-  },
-  {
-    "id": 19,
-    "content": "Know the Half of it",
-    "attempts": {
-      "weeks": [
-        "15/10/18",
-        "18/09/18"
-      ],
-      "values": [
-        35,
-        72
-      ]
-    },
-    "student": "Student 10",
-    "time": "30m",
-    "skill": "Halves",
-    "type": "Activity"
-  },
-  {
-    "id": 20,
-    "content": "Save the Ball",
-    "attempts": {
-      "weeks": [
-        "15/10/18",
-        "18/09/18"
-      ],
-      "values": [
-        35,
-        72
-      ]
-    },
-    "student": "Student 11",
-    "time": "1hr 30m",
-    "skill": "Add-Subtract",
-    "type": "Activity"
-  },
-  {
-    "id": 21,
-    "content": "String-a-bead",
-    "attempts": {
-      "weeks": [
-        "14/10/18",
-        "10/10/18",
-        "06/10/18",
-        "27/09/18",
-        "17/09/18",
-        "13/09/18",
-        "14/09/18",
-        "23/09/18"
-      ],
-      "values": [
-        53,
-        77,
-        59,
-        60,
-        97,
-        77,
-        38,
-        89
-      ]
-    },
-    "student": "Student 11",
-    "time": "43m",
-    "skill": "Count to 10",
-    "type": "Activity"
-  },
-  {
-    "id": 22,
-    "content": "Flying Flocks",
-    "attempts": {
-      "weeks": [
-        "14/10/18",
-        "10/10/18",
-        "06/10/18",
-        "27/09/18",
-        "17/09/18",
-        "13/09/18",
-        "14/09/18",
-        "23/09/18"
-      ],
-      "values": [
-        53,
-        77,
-        59,
-        60,
-        97,
-        77,
-        38,
-        89
-      ]
-    },
-    "student": "Student 12",
-    "time": "7m",
-    "skill": "Count to 10",
-    "type": "Activity"
-  }
-];
-
-type FilterModel = { [attribute: string]: any };
+type FilterModel = { students?: string[], dateRange?: { from?: Date, to?: Date } };
 
 @Injectable({
   providedIn: 'root'
@@ -547,21 +19,54 @@ export class SnapshotDataService {
     return classes.reduce((students: string[], classItem: IClass) => [...students, ...(classItem?.students || [])], []);
   }
 
-  getSnapshotsOfStudents(snapshotData: Snapshot[], students: string[], filter?: FilterModel) {
-    return snapshotData.reduce((array: SnapshotViewModel[], snapshot: Snapshot) => {
+  getSnapshotsOfStudents(snapshotData: Snapshot[], filter: FilterModel) {
 
-      if (students.indexOf(snapshot.student) === -1) return array;
+    // const students = (filter?.students || []).sort(); because student name is alphaneumeric and it messes up the order i.e: Student 12 is < Student 9
+    const students = (filter?.students || []).sort((s1, s2) => {
+      return s1.localeCompare(s2, undefined, {
+        numeric: true,
+        sensitivity: 'base'
+      });
+    });
 
-      /* if (filter && ((filter['class'] && filter['class'].indexOf(snapshot.student) === -1) ||
-        (filter['student'] && filter['student'] !== snapshot.student))) {
-        return array;
-      } */
+    return students.reduce((snapViewDataArr: SnapshotViewModel[], student: string) => {
 
-      return [...array, ...this.processStudentAttemps(snapshot, filter && filter['dateRange'])]
+      const studSnapshot: Snapshot = this.getStudentSnapshotData(student, snapshotData) || { student };
+      let studSnapshotViewData: SnapshotViewModel[] = [];
+
+      if (studSnapshot.attempts) {
+        studSnapshotViewData = this.processStudentAttemps(studSnapshot, filter && filter.dateRange);
+      }
+
+      if (!studSnapshotViewData.length) {
+        const from = moment(filter.dateRange?.from).format('DD MMMM YYYY');
+        const to = moment(filter.dateRange?.to).format('DD MMMM YYYY');
+        
+        let message = `No content has been completed by ${student}`;
+
+        if (filter.dateRange?.from) {
+          message += ` from ${from}`;
+        }
+
+        if (filter.dateRange?.from && filter.dateRange?.to) {
+          message += ` to ${to}.`;
+        }
+        
+        studSnapshotViewData.push({
+          student,
+          message
+        })
+      }
+
+      return [...snapViewDataArr, ...studSnapshotViewData];
     }, [])
   }
 
-  getSnapshotViewData(snapshotData: Snapshot[], filter?: FilterModel): SnapshotViewModel[] {
+  getStudentSnapshotData(student: string, snapshots: Snapshot[]): Snapshot | undefined {
+    return snapshots.find(snapshot => snapshot.student === student);
+  }
+
+  /* getSnapshotViewData(snapshotData: Snapshot[], filter?: FilterModel): SnapshotViewModel[] {
     return snapshotData.reduce((array: SnapshotViewModel[], snapshot: Snapshot) => {
 
       if (filter && ((filter['class'] && filter['class'].indexOf(snapshot.student) === -1) ||
@@ -571,11 +76,11 @@ export class SnapshotDataService {
 
       return [...array, ...this.processStudentAttemps(snapshot, filter && filter['dateRange'])]
     }, [])
-  }
+  } */
 
-  processStudentAttemps(studSnapData: Snapshot, dateRange?: { from: Date, to: Date }): SnapshotViewModel[] {
+  processStudentAttemps(studSnapData: Snapshot, dateRange?: { from?: Date, to?: Date }): SnapshotViewModel[] {
     const { id, student, content, time, skill, attempts, type } = studSnapData;
-    const { weeks, values } = attempts;
+    const { weeks, values } = attempts || { weeks: [], values: [] };
     const processedData: SnapshotViewModel[] = [];
 
     for (let i = 0; i < weeks.length; i++) {

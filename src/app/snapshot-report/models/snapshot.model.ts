@@ -5,21 +5,22 @@ export interface Attempts {
 }
 
 export interface Snapshot {
-   id: number,
-   content: string,
-   attempts: Attempts,
-   student: string,
-   time: string,
-   skill: string,
-   type: string 
+   id?: number,
+   content?: string,
+   attempts?: Attempts,
+   student?: string,
+   time?: string,
+   skill?: string,
+   type?: string 
 }
 
 export interface SnapshotViewModel {
-    dateCompleted: Date;
-    content: string;
-    type: string;
-    skill: string;
-    result: number;
-    timeSpent: string;
-    student: string;
+    dateCompleted?: Date;
+    content?: string;
+    type?: string;
+    skill?: string;
+    result?: number;
+    timeSpent?: string;
+    student?: string;
+    message?: string;
 }

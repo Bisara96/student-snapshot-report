@@ -17,11 +17,18 @@ export class SnapshotReportComponent implements OnInit {
 
   ngOnInit(): void {
     this.snapshotDataService.filterChange$.pipe(
-      combineLatestWith(this.snapshotReportService.getStudentSnapshots()),
-      filter(([filterModel, response]) => response && !!response.body),
-      map(([filterModel, response]) => [filterModel, JSON.parse(response.body)]),
+      combineLatestWith(this.snapshotReportService.getStudentSnapshots(), this.snapshotReportService.getClasses()),
+      filter(([filterModel, snapResponse, classes]) => snapResponse && !!snapResponse.body),
+      map(([filterModel, snapResponse, classes]) => [filterModel, JSON.parse(snapResponse.body), classes]),
       // tap(([filterModel, snapshotData]) => console.log(filterModel, snapshotData)),
-      map(([filterModel, snapshotData]) => this.snapshotDataService.getSnapshotViewData(snapshotData, filterModel)),
+      map(([filterModel, snapshotData, classes]) => {
+        if (!filterModel?.students || filterModel?.students.length === 0) {
+          filterModel.students = this.snapshotDataService.getAllStudentsOfClasses(classes);
+        }
+
+        return [filterModel, snapshotData];
+      }),
+      map(([filterModel, snapshotData]) => this.snapshotDataService.getSnapshotsOfStudents(snapshotData, filterModel)),
       // tap(snapshotViewData => console.log(snapshotViewData)),
     ).subscribe((snapshotViewData: SnapshotViewModel[]) => {
       this.snapshotViewData = snapshotViewData;

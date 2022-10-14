@@ -14,7 +14,7 @@ export class ResultHighlighterDirective implements OnInit{
     this.highlightResult(this.el);
   }
 
-  highlightResult(el: ElementRef) {
+  highlightResult(el: ElementRef<HTMLSpanElement>) {
     let color = 'black';
 
     switch (true) {
@@ -33,6 +33,8 @@ export class ResultHighlighterDirective implements OnInit{
     }
 
     el.nativeElement.style.color = color;
+
+    el.nativeElement.innerText = `${this.result}%`;
   }
 
 }
